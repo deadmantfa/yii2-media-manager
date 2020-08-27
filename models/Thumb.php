@@ -4,6 +4,7 @@ namespace deadmantfa\mm\models;
 
 use Yii;
 use yii\helpers\FileHelper;
+use yii\helpers\Json;
 use yii\helpers\Url;
 
 class Thumb extends \yii\base\Model
@@ -49,17 +50,12 @@ class Thumb extends \yii\base\Model
     /**
      * @var string thumbs url
      */
-    public static $thumbsUrl;
+    public static $thumbsUrl = 'https://img.fooddarzee.com';
 
     /**
      * @var string thumbs default size
      */
     public static $thumbsSize = self::SIZE_THUMB;
-
-    /**
-     * @var string resize mode
-     */
-    public static $resizeMode = ManipulatorInterface::THUMBNAIL_INSET;
 
     /**
      * @inheritdoc
@@ -107,34 +103,6 @@ class Thumb extends \yii\base\Model
     }
 
     /**
-     * save thumb
-     */
-    public function save()
-    {
-        $path = Yii::getAlias(self::$thumbsPath . '/' . $this->dstPath);
-        $folder = preg_replace('#/[^/]*$#', '', $path);
-        if (!file_exists($folder) && !FileHelper::createDirectory($folder))
-            return false;
-
-        $stream = self::$fs->readStream($this->srcPath);
-        if (!is_resource($stream))
-            return false;
-
-        if ($this->size === self::SIZE_FULL) {
-            file_put_contents($path, $stream);
-            fclose($stream);
-        } else {
-            $image = Image::thumbnail($stream, $this->size[0], $this->size[1], self::$resizeMode);
-            fclose($stream);
-            if (!$image || !$image->save($path)) {
-                return false;
-            }
-        }
-        $this->realPath = $path;
-        return true;
-    }
-
-    /**
      * Get thumb src
      * @param string $path
      * @param string $size
@@ -147,11 +115,22 @@ class Thumb extends \yii\base\Model
         $regexp = '#^(.*)\.(' . self::getExtensionsRegexp() . ')$#';
         if (preg_match($regexp, $path, $matches) && in_array($size, array_keys(self::$sizes))) {
             $size = self::$sizes[$size];
-            $dstPath = "{$matches[1]}_{$size[0]}x{$size[1]}.{$matches[2]}";
+            $dstPath = Json::encode([
+                'bucket' => 'fooddarzee-inventory-img',
+                'key' => $path,
+                'edits' => [
+                    'resize' => [
+                        'width' => $size[0],
+                        'height' => $size[1],
+                        'fir' => "cover"
+                    ]
+                ]
+            ]);
+
             return Url::to(self::$thumbsUrl . '/' . $dstPath, true);
-        } else {
-            throw new \yii\base\InvalidParamException();
         }
+        throw new \yii\base\InvalidParamException();
+
     }
 
     /**
@@ -168,7 +147,7 @@ class Thumb extends \yii\base\Model
             $size = self::SIZE_FULL;
             if (preg_match('#^(.*)_([0-9]+)x([0-9]+)$#', $name, $matches)) {
                 $name = $matches[1];
-                $size = [(int) $matches[2], (int) $matches[3]];
+                $size = [(int)$matches[2], (int)$matches[3]];
             }
             return [
                 'srcPath' => $name . '.' . $extension,
