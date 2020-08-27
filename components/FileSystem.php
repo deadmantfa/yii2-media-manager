@@ -3,7 +3,6 @@
 namespace deadmantfa\mm\components;
 
 use creocoder\flysystem\LocalFilesystem;
-use deadmantfa\mm\models\Thumb;
 use yii\base\Component;
 use yii\helpers\FileHelper;
 
@@ -55,6 +54,7 @@ class FileSystem extends Component
 
     /**
      * @param array $contents
+     * @param bool $recursive
      * @return array
      */
     protected function filterContents($contents, $recursive = false)
@@ -64,14 +64,8 @@ class FileSystem extends Component
             if ($recursive && isset($f['type']) && $f['type'] === 'dir') {
                 continue;
             }
-            if (isset($f['basename'])) {
-                if (preg_match('#^\.#', $f['basename']))
-                    continue;
-            }
-            if (isset($f['extension'])) {
-                if (in_array($f['extension'], array_keys(Thumb::$extensions))) {
-                    $f['thumb'] = Thumb::getThumbSrc($f['path']);
-                }
+            if (isset($f['basename']) && 0 === strpos($f['basename'], ".")) {
+                continue;
             }
             $new[] = $f;
         }
