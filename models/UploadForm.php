@@ -80,7 +80,7 @@ class UploadForm extends \yii\base\Model
 
             if ($stream = fopen($file->tempName, 'r+')) {
                 $write = $fs->writeStream($path, $stream);
-                fclose($stream);                
+                fclose($stream);
                 if ($write) {
                     return true;
                 } else {

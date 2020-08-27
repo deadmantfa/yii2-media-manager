@@ -2,17 +2,16 @@
 
 namespace deadmantfa\yii2\mm\controllers;
 
+use deadmantfa\yii2\mm\models\UploadForm;
 use Yii;
 use yii\base\Model;
+use yii\filters\ContentNegotiator;
+use yii\helpers\FileHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\RangeNotSatisfiableHttpException;
 use yii\web\Response;
 use yii\web\UploadedFile;
-use yii\helpers\FileHelper;
-
-use deadmantfa\yii2\mm\models\UploadForm;
-use yii\filters\ContentNegotiator;
 
 /**
  */
@@ -93,6 +92,26 @@ class ApiController extends \yii\web\Controller
     }
 
     /**
+     * Serializes the validation errors in a model.
+     * @param Model $model
+     * @return array the array representation of the errors
+     */
+    protected function serializeModelErrors($model)
+    {
+        Yii::$app->getResponse()->setStatusCode(422, 'Data Validation Failed.');
+
+        $result = [];
+        foreach ($model->getFirstErrors() as $name => $message) {
+            $result[] = [
+                'field' => $name,
+                'message' => $message,
+            ];
+        }
+
+        return $result;
+    }
+
+    /**
      * @param $path
      * @return mixed
      * @throws BadRequestHttpException
@@ -117,26 +136,6 @@ class ApiController extends \yii\web\Controller
         }
 
         throw new NotFoundHttpException('The file does not exists.');
-    }
-
-    /**
-     * Serializes the validation errors in a model.
-     * @param Model $model
-     * @return array the array representation of the errors
-     */
-    protected function serializeModelErrors($model)
-    {
-        Yii::$app->getResponse()->setStatusCode(422, 'Data Validation Failed.');
-
-        $result = [];
-        foreach ($model->getFirstErrors() as $name => $message) {
-            $result[] = [
-                'field' => $name,
-                'message' => $message,
-            ];
-        }
-
-        return $result;
     }
 
 }

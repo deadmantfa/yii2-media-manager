@@ -6,8 +6,6 @@ use Yii;
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
-
-use deadmantfa\yii2\mm\widgets\MediaManagerAsset;
 use yii\widgets\InputWidget;
 
 class MediaManagerInputModal extends InputWidget
@@ -74,20 +72,6 @@ class MediaManagerInputModal extends InputWidget
     /**
      * @return string
      */
-    public function renderInput()
-    {
-        $input = '';
-        if ($this->hasModel()) {
-            $input = Html::activeTextInput($this->model, $this->attribute, $this->inputOptions);
-        } else {
-            $input = Html::textInput($this->name, $this->value, $this->inputOptions);
-        }
-        return $input;
-    }
-
-    /**
-     * @return string
-     */
     public function renderInputGroup()
     {
         $buttonIcon = '<i class="fa fa-fw fa-folder-open" aria-hidden="true"></i>';
@@ -100,6 +84,28 @@ class MediaManagerInputModal extends InputWidget
 
         $input = $this->renderInput();
         return Html::tag('div', $input . $button, ['class' => 'input-group']);
+    }
+
+    /**
+     * @return string
+     */
+    public function getModalId()
+    {
+        return $this->getId() . '-modal';
+    }
+
+    /**
+     * @return string
+     */
+    public function renderInput()
+    {
+        $input = '';
+        if ($this->hasModel()) {
+            $input = Html::activeTextInput($this->model, $this->attribute, $this->inputOptions);
+        } else {
+            $input = Html::textInput($this->name, $this->value, $this->inputOptions);
+        }
+        return $input;
     }
 
     /**
@@ -125,14 +131,6 @@ class MediaManagerInputModal extends InputWidget
                 </div>
             </div>
 HTML;
-    }
-
-    /**
-     * @return string
-     */
-    public function getModalId()
-    {
-        return $this->getId() . '-modal';
     }
 
     /**

@@ -6,8 +6,6 @@ use Yii;
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
 
-use deadmantfa\yii2\mm\widgets\MediaManagerAsset;
-
 class MediaManagerInput extends \yii\widgets\InputWidget
 {
 

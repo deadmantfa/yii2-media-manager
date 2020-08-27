@@ -6,8 +6,6 @@ use Yii;
 use yii\helpers\Html;
 use yii\helpers\Json;
 
-use deadmantfa\yii2\mm\widgets\MediaManagerAsset;
-
 class MediaManager extends \yii\base\Widget
 {
 

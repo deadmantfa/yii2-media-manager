@@ -2,13 +2,14 @@
 
 namespace deadmantfa\yii2\mm\components;
 
+use creocoder\flysystem\LocalFilesystem;
+use deadmantfa\yii2\mm\models\Thumb;
 use Yii;
+use yii\base\Component;
 use yii\helpers\FileHelper;
 use yii\helpers\Url;
 
-use deadmantfa\yii2\mm\models\Thumb;
-
-class FileSystem extends \yii\base\Component
+class FileSystem extends Component
 {
 
     /**
@@ -31,12 +32,13 @@ class FileSystem extends \yii\base\Component
      */
     public function init()
     {
-        $this->local = ($this->fs instanceof \creocoder\flysystem\LocalFilesystem);
+        $this->local = ($this->fs instanceof LocalFilesystem);
     }
 
     /**
      * @param string $path
-     */    
+     * @return
+     */
     public function normalizePath($path)
     {
         return FileHelper::normalizePath($path, $this->directorySeparator);

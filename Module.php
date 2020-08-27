@@ -2,9 +2,8 @@
 
 namespace deadmantfa\yii2\mm;
 
-use Yii;
-
 use deadmantfa\yii2\mm\components\FileSystem;
+use Yii;
 use yii\base\InvalidConfigException;
 use yii\filters\Cors;
 

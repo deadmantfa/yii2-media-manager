@@ -1,21 +1,24 @@
 {
-    "name": "deadmantfa/yii2-media-manager",
-    "description": "Manager Media",
-    "type": "yii2-extension",
-    "keywords": ["yii2","extension"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "deadmantfa",
-            "email": "wenceslausdsilva@gmail.com"
-        }
-    ],
-    "require": {
-        "yiisoft/yii2": "~2.0.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "deadmantfa\\mm\\": ""
-        }
+  "name": "deadmantfa/yii2-media-manager",
+  "description": "Manager Media",
+  "type": "yii2-extension",
+  "keywords": [
+    "yii2",
+    "extension"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "deadmantfa",
+      "email": "wenceslausdsilva@gmail.com"
     }
+  ],
+  "require": {
+    "yiisoft/yii2": "~2.0.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "deadmantfa\\mm\\": ""
+    }
+  }
 }
