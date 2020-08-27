@@ -115,7 +115,7 @@ class Thumb extends \yii\base\Model
         $regexp = '#^(.*)\.(' . self::getExtensionsRegexp() . ')$#';
         if (preg_match($regexp, $path, $matches) && in_array($size, array_keys(self::$sizes))) {
             $size = self::$sizes[$size];
-            $dstPath = Json::encode([
+            $dstPath = base64_encode(Json::encode([
                 'bucket' => 'fooddarzee-inventory-img',
                 'key' => $path,
                 'edits' => [
@@ -125,7 +125,7 @@ class Thumb extends \yii\base\Model
                         'fir' => "cover"
                     ]
                 ]
-            ]);
+            ]));
 
             return Url::to(self::$thumbsUrl . '/' . $dstPath, true);
         }
