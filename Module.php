@@ -10,7 +10,7 @@ use yii\filters\Cors;
 class Module extends \yii\base\Module
 {
 
-    public $controllerNamespace = 'deadmantfa\yii2\mm\controllers';
+    public $controllerNamespace = 'deadmantfa\mm\controllers';
 
     /**
      * @var Custom filesystem
