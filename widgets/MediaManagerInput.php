@@ -38,6 +38,7 @@ class MediaManagerInput extends InputWidget
 
     /**
      * @inheritdoc
+     * @throws \yii\base\InvalidConfigException
      */
     public function init()
     {
