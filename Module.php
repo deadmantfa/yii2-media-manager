@@ -3,10 +3,8 @@
 namespace deadmantfa\yii2\mm;
 
 use Yii;
-use Imagine\Image\ManipulatorInterface;
 
-use iutbay\yii2\mm\components\FileSystem;
-use iutbay\yii2\mm\models\Thumb;
+use deadmantfa\yii2\mm\components\FileSystem;
 use yii\base\InvalidConfigException;
 use yii\filters\Cors;
 

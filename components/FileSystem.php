@@ -1,12 +1,12 @@
 <?php
 
-namespace iutbay\yii2\mm\components;
+namespace deadmantfa\yii2\mm\components;
 
 use Yii;
 use yii\helpers\FileHelper;
 use yii\helpers\Url;
 
-use iutbay\yii2\mm\models\Thumb;
+use deadmantfa\yii2\mm\models\Thumb;
 
 class FileSystem extends \yii\base\Component
 {

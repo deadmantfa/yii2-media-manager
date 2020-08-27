@@ -1,13 +1,13 @@
 <?php
 
-namespace iutbay\yii2\mm\widgets;
+namespace deadmantfa\yii2\mm\widgets;
 
 use Yii;
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
 
-use iutbay\yii2\mm\widgets\MediaManagerAsset;
+use deadmantfa\yii2\mm\widgets\MediaManagerAsset;
 use yii\widgets\InputWidget;
 
 class MediaManagerInputModal extends InputWidget

@@ -1,6 +1,6 @@
 <?php
 
-namespace iutbay\yii2\mm\widgets;
+namespace deadmantfa\yii2\mm\widgets;
 
 use yii\web\AssetBundle;
 
