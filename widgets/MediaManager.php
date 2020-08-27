@@ -3,7 +3,7 @@
 namespace deadmantfa\yii2\mm\widgets;
 
 use Yii;
-use yii\helpers\Html;
+use yii\bootstrap4\Html;
 use yii\helpers\Json;
 
 class MediaManager extends \yii\base\Widget
