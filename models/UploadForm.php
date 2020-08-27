@@ -3,9 +3,10 @@
 namespace deadmantfa\mm\models;
 
 use Yii;
+use yii\base\Model;
 use yii\web\UploadedFile;
 
-class UploadForm extends \yii\base\Model
+class UploadForm extends Model
 {
 
     /**

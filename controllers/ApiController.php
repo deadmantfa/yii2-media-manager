@@ -7,6 +7,7 @@ use Yii;
 use yii\base\Model;
 use yii\filters\ContentNegotiator;
 use yii\web\BadRequestHttpException;
+use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\RangeNotSatisfiableHttpException;
 use yii\web\Response;
@@ -14,7 +15,7 @@ use yii\web\UploadedFile;
 
 /**
  */
-class ApiController extends \yii\web\Controller
+class ApiController extends Controller
 {
 
     public $enableCsrfValidation = false;

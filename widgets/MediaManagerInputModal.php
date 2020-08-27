@@ -5,6 +5,7 @@ namespace deadmantfa\mm\widgets;
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;
+use yii\web\View;
 use yii\widgets\InputWidget;
 
 class MediaManagerInputModal extends InputWidget
@@ -155,12 +156,12 @@ HTML;
             var {$varName};
             $('#{$this->getModalId()}')
                 .on('show.bs.modal', function (e) {
-                    {$varName} = new MM({$options});
+                    {$varName} = new MM({$options})
                 }).on('hide.bs.modal', function (e) {
                     {$varName}.destroy();
                 });
 JS;
-        $view->registerJs($js, \yii\web\View::POS_END);
+        $view->registerJs($js, View::POS_END);
     }
 
 }

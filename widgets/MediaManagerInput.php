@@ -4,8 +4,10 @@ namespace deadmantfa\mm\widgets;
 
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
+use yii\web\View;
+use yii\widgets\InputWidget;
 
-class MediaManagerInput extends \yii\widgets\InputWidget
+class MediaManagerInput extends InputWidget
 {
 
     /**
@@ -116,7 +118,7 @@ class MediaManagerInput extends \yii\widgets\InputWidget
         ]);
 
         $options = Json::encode($options);
-        $view->registerJs("new MM($options);", \yii\web\View::POS_END);
+        $view->registerJs("new MM($options);", View::POS_END);
     }
 
 }
