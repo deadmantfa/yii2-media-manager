@@ -40,6 +40,7 @@ class Module extends \yii\base\Module
     /**
      * @inheritdoc
      * @throws InvalidConfigException
+     * @throws \yii\base\InvalidParamException
      */
     public function init()
     {
