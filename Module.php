@@ -1,8 +1,8 @@
 <?php
 
-namespace deadmantfa\yii2\mm;
+namespace deadmantfa\mm;
 
-use deadmantfa\yii2\mm\components\FileSystem;
+use deadmantfa\mm\components\FileSystem;
 use Yii;
 use yii\base\InvalidConfigException;
 use yii\filters\Cors;

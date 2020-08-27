@@ -1,8 +1,7 @@
 <?php
 
-namespace deadmantfa\yii2\mm\widgets;
+namespace deadmantfa\mm\widgets;
 
-use Yii;
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
 use yii\web\JsExpression;

@@ -1,12 +1,11 @@
 <?php
 
-namespace deadmantfa\yii2\mm\controllers;
+namespace deadmantfa\mm\controllers;
 
-use deadmantfa\yii2\mm\models\UploadForm;
+use deadmantfa\mm\models\UploadForm;
 use Yii;
 use yii\base\Model;
 use yii\filters\ContentNegotiator;
-use yii\helpers\FileHelper;
 use yii\web\BadRequestHttpException;
 use yii\web\NotFoundHttpException;
 use yii\web\RangeNotSatisfiableHttpException;

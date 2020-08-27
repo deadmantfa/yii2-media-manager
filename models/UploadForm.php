@@ -1,9 +1,8 @@
 <?php
 
-namespace deadmantfa\yii2\mm\models;
+namespace deadmantfa\mm\models;
 
 use Yii;
-use yii\helpers\FileHelper;
 use yii\web\UploadedFile;
 
 class UploadForm extends \yii\base\Model

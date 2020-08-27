@@ -1,13 +1,11 @@
 <?php
 
-namespace deadmantfa\yii2\mm\components;
+namespace deadmantfa\mm\components;
 
 use creocoder\flysystem\LocalFilesystem;
-use deadmantfa\yii2\mm\models\Thumb;
-use Yii;
+use deadmantfa\mm\models\Thumb;
 use yii\base\Component;
 use yii\helpers\FileHelper;
-use yii\helpers\Url;
 
 class FileSystem extends Component
 {
