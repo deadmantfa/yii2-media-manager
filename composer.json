@@ -2,7 +2,7 @@
   "name": "deadmantfa/yii2-media-manager",
   "description": "Manager Media",
   "type": "yii2-extension",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "minimum-stability": "dev",
   "prefer-stable": true,
   "keywords": [
